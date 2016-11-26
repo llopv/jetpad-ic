@@ -17,7 +17,7 @@ import {Component, Input} from "@angular/core";
             overflow:hidden;
             white-space:nowrap;
             text-overflow:ellipsis;
-            max-width: 200px;
+            max-width: 240px;
             display:block;
         }
     `]
