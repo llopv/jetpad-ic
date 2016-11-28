@@ -209,7 +209,6 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   onVoted(agreed: boolean) {
-    //agreed ? this.assessmentComment = ' de acuerdo?' : this.assessmentComment = ' en desacuerdo?';
     this.assessmentComment = agreed;
     this.hasCommented = true;
   }
