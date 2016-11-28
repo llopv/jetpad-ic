@@ -214,7 +214,6 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   onCommented() {
-    console.log('has commented...');
     this.hideAssessment = true;
     this.hasCommented = false;
   }
