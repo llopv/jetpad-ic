@@ -39,8 +39,8 @@ export class EditorComponent implements OnInit, OnDestroy {
   hideAssessment = false;
   assesmentTop = 100;
   selectedRange = '';
-  assessmentComment = '';
-  hasVoted = false;
+  assessmentComment = false;
+  hasCommented = false;
 
   annotationMap = {
     'bold': 'style/fontWeight=bold',
@@ -159,7 +159,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.hideAssessment = true;
         }
         this.selectedRange = range.text;
-        this.hasVoted = false;
+        this.hasCommented = false;
         this.annotations = range.annotations;
         this.updateEditorToolbar();
       });
@@ -209,7 +209,14 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   onVoted(agreed: boolean) {
-    agreed ? this.assessmentComment = ' de acuerdo?' : this.assessmentComment = ' en desacuerdo?';
-    this.hasVoted = true;
+    //agreed ? this.assessmentComment = ' de acuerdo?' : this.assessmentComment = ' en desacuerdo?';
+    this.assessmentComment = agreed;
+    this.hasCommented = true;
+  }
+
+  onCommented() {
+    console.log('has commented...');
+    this.hideAssessment = true;
+    this.hasCommented = false;
   }
 }
