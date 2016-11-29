@@ -4,8 +4,8 @@ import {Component, Input, Output, OnInit, EventEmitter} from "@angular/core";
   selector: 'editor-assessment',
   template: `
         <div class="tooltip-editor" [hidden]="hidden" [style.top.px]="posY">
-            <button class="action-button btn btn-success" (click)="vote(true)"><span class="action-icon glyphicon glyphicon-ok"></span></button>
-            <button class="action-button btn btn-danger" (click)="vote(false)"><span class="action-icon glyphicon glyphicon-remove"></span></button>
+            <button class="action-button btn btn-success" (click)="vote(true)"><span class="action-icon glyphicon glyphicon-thumbs-up"></span></button>
+            <button class="action-button btn btn-danger" (click)="vote(false)"><span class="action-icon glyphicon glyphicon-thumbs-down"></span></button>
         </div>
   `,
   styles:[`
@@ -20,7 +20,7 @@ import {Component, Input, Output, OnInit, EventEmitter} from "@angular/core";
       font-weight: normal;
       font-style: normal;
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-      z-index: 400;
+      z-index: 9;
       padding: 20px;
     }
   `]
