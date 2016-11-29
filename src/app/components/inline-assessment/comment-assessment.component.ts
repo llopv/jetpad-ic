@@ -5,14 +5,27 @@ import {Component, Input, Output, EventEmitter, OnChanges, SimpleChanges} from "
     template: `
         <div class="panel" [hidden]="!hasCommented">
           <div class="panel-body">
+            <i class="icon icon-close icon-middle"></i>
             <h4>¿Porqué está {{textoAprobacion}}</h4>
             <span class="hideOverflow">{{texto}}</span>
-            <textarea placeholder="máximo 250 caracteres ..." maxlength="250" style="width: 100%"></textarea>
+            <textarea placeholder="máximo 250 caracteres ..." maxlength="250" style="width: 100%" [(ngModel)]='comment'></textarea>
             <button class="btn btn-success btn-block" (click)="vote()">Aceptar</button>
           </div>
         </div>
     `,
     styles: [`
+        .panel-body{
+            width: 280px;
+        }
+        .panel-body .icon {
+            position: absolute;
+            top: 0px;
+            right: 5px;
+            font-size: 30px;
+            z-index: 9;
+            color: #CA3610;
+            cursor: pointer;
+        }
         .hideOverflow{
             overflow:hidden;
             white-space:nowrap;
@@ -27,9 +40,10 @@ export class CommentAssessment implements OnChanges {
     @Input() tipo: boolean;
     @Input() hasCommented: boolean;
     @Input() texto: string;
-    @Output() emittedVote = new EventEmitter<boolean>();
+    @Output() emittedVote = new EventEmitter<any>();
 
     textoAprobacion = '';
+    comment = '';
 
     ngOnChanges(...args: any[]) {
         if (typeof args[0].tipo !== 'undefined') {
@@ -42,6 +56,11 @@ export class CommentAssessment implements OnChanges {
     }
 
     vote(){
-      this.emittedVote.emit();
+        let emittedVote = {
+            tipo: this.tipo,
+            texto: this.texto,
+            comentario: this.comment
+        };
+        this.emittedVote.emit(emittedVote);
     }
 }
