@@ -1,0 +1,13 @@
+.carousel-indicators {
+  display: none;
+  bottom: 60px;
+  li{
+    border-color: #337ab7
+  }
+}
+
+.carousel.slide{
+  .carousel-inner{
+    height: 120px;
+  }
+}

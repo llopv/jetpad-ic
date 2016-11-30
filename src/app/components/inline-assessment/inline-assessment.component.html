@@ -1,0 +1,6 @@
+<div class="tooltip-editor" [hidden]="hidden" [style.top.px]="posY">
+    <button class="action-button btn btn-success" (click)="openModal(0)"><span class="action-icon glyphicon glyphicon-thumbs-up"></span></button>
+    <button class="action-button btn btn-danger" (click)="openModal(1)"><span class="action-icon glyphicon glyphicon-thumbs-down"></span></button>
+    <button class="action-button btn" (click)="openModal(2)"><span class="action-icon glyphicon glyphicon-star"></span></button>
+</div>
+<rate-modal></rate-modal>

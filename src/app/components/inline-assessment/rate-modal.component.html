@@ -1,0 +1,86 @@
+<!-- control modal from parent component -->
+<modal #rateModal>
+    <modal-header>
+        <h3>{{section}}</h3>
+        <p style="overflow-y:auto;max-height: 6em;">{{content}}</p>
+    </modal-header>
+    <modal-content>
+        <tabset [justified]="true">
+            <tab heading='De acuerdo'>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <carousel [interval]="false" >
+                                <slide *ngFor="let valoracion of positivas" [index]="positivasIndex">
+                                    <div class="row" style="width: 100%;padding-top:5px;">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8 sm-text-center" style="text-align: center;">
+                                            <p>{{valoracion.comentario}}</p>
+                                            <button class="btn" (click)="copiar(valoracion)">copiar</button>
+                                        </div>
+                                        <div class="col-md-2">
+
+                                        </div>
+                                    </div>
+                                </slide>
+                            </carousel>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">{{positivasIndex}}/{{positivas.length}}</div>
+                    </div>
+                </div>
+            </tab>
+            <tab heading='Desacuerdo'>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <carousel [interval]="3000">
+                                <slide *ngFor="let valoracion of negativas">
+                                    <div class="row" style="width: 100%;padding-top:5px;">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8 sm-text-center" style="text-align: center;">
+                                            <p>{{valoracion.comentario}}</p>
+                                            <button class="btn" (click)="copiar(valoracion)">copiar</button>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                    </div>
+                                </slide>
+                            </carousel>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">{{negativasIndex}}/{{negativas.length}}</div>
+                    </div>
+                </div>
+            </tab>
+            <tab heading='Preguntas'>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <carousel [interval]="3000">
+                                <slide *ngFor="let valoracion of preguntas">
+                                    <div class="row" style="width: 100%;padding-top:5px;">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8 sm-text-center" style="text-align: center;">
+                                            <p>{{valoracion.comentario}}</p>
+                                            <button class="btn" (click)="copiar(valoracion)">copiar</button>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                    </div>
+                                </slide>
+                            </carousel>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">{{preguntasIndex}}/{{preguntas.length}}</div>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </modal-content>
+    <modal-footer>
+        <div class="row"><textarea style="width:100%;" [(ngModel)]="valoracionTexto"></textarea></div>
+        <div class="row"><button class="btn btn-success btn-block" (click)="close()">Valorar</button></div>
+    </modal-footer>
+</modal>
