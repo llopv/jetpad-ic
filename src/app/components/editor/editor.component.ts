@@ -158,7 +158,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         } else {
           this.hideAssessment = true;
         }
-        this.selectedRange = range.text;
+        this.selectedRange = range;
         this.hasCommented = false;
         this.annotations = range.annotations;
         this.updateEditorToolbar();

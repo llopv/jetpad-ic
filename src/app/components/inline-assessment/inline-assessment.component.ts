@@ -1,14 +1,10 @@
-import {Component, Input, Output, OnInit, EventEmitter} from "@angular/core";
+import {Component, Input, Output, OnInit, EventEmitter, ViewChild} from "@angular/core";
+import {RateModal} from "./rate-modal.component";
 
 @Component({
-  selector: 'editor-assessment',
-  template: `
-        <div class="tooltip-editor" [hidden]="hidden" [style.top.px]="posY">
-            <button class="action-button btn btn-success" (click)="vote(true)"><span class="action-icon glyphicon glyphicon-thumbs-up"></span></button>
-            <button class="action-button btn btn-danger" (click)="vote(false)"><span class="action-icon glyphicon glyphicon-thumbs-down"></span></button>
-        </div>
-  `,
-  styles:[`
+    selector: 'editor-assessment',
+    templateUrl: './inline-assessment.component.html',
+    styles: [`
     .tooltip-editor {
       float: right;
       position: absolute;
@@ -23,24 +19,36 @@ import {Component, Input, Output, OnInit, EventEmitter} from "@angular/core";
       z-index: 9;
       padding: 20px;
     }
+    .carousel-control{
+        color: #2220a5;
+    }
   `]
 })
 
 export class InlineAssessment implements OnInit {
 
-  @Input() posY: number;
-  @Input() hidden: boolean;
-  @Output() onVoted = new EventEmitter<boolean>();
-  voted = false;
+    @Input() posY: number;
+    @Input() hidden: boolean;
+    @Output() onVoted = new EventEmitter<boolean>();
+    @ViewChild(RateModal) childModal: RateModal;
+    voted = false;
 
-  ngOnInit() {
-    this.hidden = false;
-  }
+    ngOnInit() {
+        this.hidden = false;
+    }
 
-  vote(agreed: boolean) {
-    console.log("Emitiendo voto... ");
-    this.onVoted.emit(agreed);
-    this.voted = true;
-  }
+    vote(agreed: boolean) {
+        console.log("Emitiendo voto... ");
+        this.onVoted.emit(agreed);
+        this.voted = true;
+    }
+
+    close() {
+        this.childModal.close();
+    }
+
+    openModal(agreed: number) {
+        this.childModal.open(agreed);
+    }
 
 }

@@ -25,6 +25,10 @@ import { NoContent } from './components/no-content';
 import { UnauthorizedComponent } from "./components/unauthorized";
 import { ShareSettingsComponent } from "./components/share-settings";
 import { UserIconComponent } from "./components/user-icon";
+import {InlineAssessment} from "./components/inline-assessment/inline-assessment.component";
+import {CommentAssessment} from "./components/inline-assessment/comment-assessment.component";
+import {RateModal} from "./components/inline-assessment/rate-modal.component";
+import {ShareRating} from "./components/inline-assessment/share-rating.component";
 
 import { DocumentService, ListenerService, UserService } from "./services";
 import { LoggedUserGuard } from "./guards";
@@ -40,8 +44,8 @@ import { UiSwitchModule } from 'angular2-ui-switch';
 import { ClipboardModule }  from 'angular2-clipboard';
 import { CarouselModule } from 'ng2-bootstrap/components/carousel';
 import { TooltipModule } from 'ng2-bootstrap/components/tooltip';
-import {InlineAssessment} from "./components/inline-assessment/inline-assessment.component";
-import {CommentAssessment} from "./components/inline-assessment/comment-assessment.component";
+
+import { TabsModule } from 'ng2-bootstrap/components/tabs';
 
 const APP_PROVIDERS = [
   AppState,
@@ -75,6 +79,8 @@ const APP_PROVIDERS = [
     SearchPipe,
     InlineAssessment,
     CommentAssessment,
+    RateModal,
+    ShareRating,
     DROPDOWN_DIRECTIVES
   ],
   imports: [ // import Angular's modules
@@ -86,6 +92,7 @@ const APP_PROVIDERS = [
     ClipboardModule,
     CarouselModule,
     TooltipModule,
+    TabsModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
