@@ -6,7 +6,6 @@ import {Component, Input, Output, EventEmitter} from '@angular/core'
     <div class="panel">
       <div class="panel-body panel-moderador">
         <h2>Panel del moderador</h2>
-        <h4>Análisis</h4>
         <div>
           <div class="panel panel-interno">           
             <button class="btn btn-info btn-block" (click)="estadisticas(false)">
