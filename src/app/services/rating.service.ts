@@ -90,6 +90,7 @@ export class RatingService {
     rating.put("argument_type",argumentType);
     rating.put("rating_type",ratingType);
     rating.put("endorsement_count","1");
+    rating.put("date", Date.now().toString());
 
     ratingMap.put(ratingId, rating);
 
@@ -141,7 +142,8 @@ export class RatingService {
         argument_text: rating.get("argument_text").getValue(),
         argument_type: rating.get("argument_type").getValue(),
         rating_type: rating.get("rating_type").getValue(),
-        endorsement_count: rating.get("endorsement_count").getValue()
+        endorsement_count: rating.get("endorsement_count").getValue(),
+        date : rating.get("date").getValue()
 
       };
 
