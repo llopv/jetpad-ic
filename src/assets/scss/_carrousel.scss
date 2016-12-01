@@ -11,3 +11,36 @@
     height: 120px;
   }
 }
+
+a.carousel-control{
+  display: none;
+  background: none !important;
+  background-image: none;
+  background-repeat: no-repeat;
+  span{
+    color: #337ab7
+  }
+}
+
+.carousel-item{
+  .item{
+    height: 100%;
+    .row{
+      margin-top: 15px;
+      height: 100%;
+      text-align: center;
+      margin-left: 0;
+      .col-md-2{
+        height: 100%;
+        a{
+          span{
+            padding-top:50%;
+            color: #337ab7;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
