@@ -202,16 +202,18 @@
 
   <div class="editor-box-right">
 
-    <button class="btn btn-with-icon btn-editor blue">
+    <moderator-tool (estadisticasActivated)="pintarGraficos()" [selectedSection]="currentHeaderNode.textContent"></moderator-tool>
+
+    <!--button class="btn btn-with-icon btn-editor blue">
       <i class="icon icon-comment icon-middle"></i>
       Comments (5)
-    </button>
-    <button class="btn btn-with-icon btn-editor yellow">
+    </button-->
+    <!--button class="btn btn-with-icon btn-editor yellow">
       <i class="icon icon-label icon-middle"></i>
       Bookmarks (5)
-    </button>
+    </button-->
     <share-rating *ngIf="currentHeaderNode" [text]="paragraphShare.text" [link]="paragraphShare.link"></share-rating>
-    <div class="panel">
+    <!--div class="panel">
       <div class="panel-body">
         <ul>
           <li><a href>Lorem ipsum dolor sit amet, the consectetur.</a></li>
@@ -220,9 +222,9 @@
           <li><a href>Lorem ipsum dolor sit amet, the consectetur.</a></li>
         </ul>
       </div>
-    </div>
+    </div-->
 
-    <div class="panel">
+    <!--div class="panel">
       <div class="panel-body toggle-items">
         <i class="icon icon-close icon-middle"></i>
         <div class="toggle-box">
@@ -338,13 +340,14 @@
           </div>
         </div>
       </div>
-    </div>
+    </div-->
 
   </div>
 
 
   <div id="editor-container">
     <editor-assessment [hidden]="hideAssessment" [posY]="assesmentTop" [range]="selectedRange" [sectionNode]="currentHeaderNode" (onVoted)="onVoted($event)"></editor-assessment>
+    <graficos></graficos>
   </div>
 </section>
 

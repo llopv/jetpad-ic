@@ -1,5 +1,5 @@
 import { Injectable, Inject } from "@angular/core";
-import { DocumentService } from ".";
+import { DocumentService } from "./document.service";
 
 declare let SwellRT: any;
 declare let Date: any;

@@ -1,9 +1,12 @@
 {
   "name": "jetpad",
-  "dependencies": {},
+  "dependencies": {
+    "d3": "registry:npm/d3#3.0.0+20160723033700"
+  },
   "globalDependencies": {
     "angular-protractor": "registry:dt/angular-protractor#1.5.0+20160914235635",
     "core-js": "registry:dt/core-js#0.0.0+20160914114559",
+    "highcharts": "registry:dt/highcharts#4.2.5+20161025153818",
     "jasmine": "registry:dt/jasmine#2.5.0+20161003201800",
     "node": "registry:dt/node#6.0.0+20161019125345",
     "selenium-webdriver": "registry:dt/selenium-webdriver#2.53.1+20160914235635"

@@ -1,6 +1,7 @@
-import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Component, OnInit, OnDestroy, ViewChild} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {DocumentService} from "../../services";
+import {Graficos} from "../charts/highchart.component"
 
 @Component({
   selector: 'app-editor',
@@ -17,7 +18,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   privateDocument: any;
 
   showOutline: boolean = false;
-
+  @ViewChild(Graficos) graficos: Graficos;
   formats: Array<Array<string>> = [
     //['paragraph-type'],
     //['font-family'],
@@ -43,6 +44,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   hasCommented = false;
   currentHeaderNode: any;
 
+
   annotationMap = {
     'bold': 'style/fontWeight=bold',
     'italic': 'style/fontStyle=italic',
@@ -67,6 +69,9 @@ export class EditorComponent implements OnInit, OnDestroy {
         this.participants.unshift(document.author);
       }
     });
+    this.currentHeaderNode = {
+      textContent: ''
+    };
   }
 
   get editorElement() {
@@ -253,5 +258,9 @@ export class EditorComponent implements OnInit, OnDestroy {
   onCommented() {
     this.hideAssessment = true;
     this.hasCommented = false;
+  }
+
+  pintarGraficos() {
+    this.graficos.open();
   }
 }

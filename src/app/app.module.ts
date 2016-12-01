@@ -29,6 +29,8 @@ import {InlineAssessment} from "./components/inline-assessment/inline-assessment
 import {CommentAssessment} from "./components/inline-assessment/comment-assessment.component";
 import {RateModal} from "./components/inline-assessment/rate-modal.component";
 import {ShareRating} from "./components/inline-assessment/share-rating.component";
+import {Graficos} from "./components/charts/highchart.component";
+import {ModeratorTool} from "./components/moderator-tool/moderator-tool.component";
 
 import { DocumentService, ListenerService, UserService, RatingService } from "./services";
 import { LoggedUserGuard } from "./guards";
@@ -84,6 +86,8 @@ const APP_PROVIDERS = [
     CommentAssessment,
     RateModal,
     ShareRating,
+    Graficos,
+    ModeratorTool,
     DROPDOWN_DIRECTIVES
   ],
   imports: [ // import Angular's modules
