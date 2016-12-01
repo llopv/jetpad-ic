@@ -1,12 +1,13 @@
 <!-- control modal from parent component -->
-<modal #rateModal>
+<modal #rateModal id="rating">
     <modal-header>
         <h3>{{section}}</h3>
         <p style="overflow-y:auto;max-height: 6em;">{{content}}</p>
     </modal-header>
     <modal-content>
+        <p style="text-align:center; font-weight:bold; margin-top: 1.5em; margin-bottom: 2em">Valoraciones previas</p>
         <tabset [justified]="true">
-            <tab heading='De acuerdo'>
+            <tab heading='Acuerdos'>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
@@ -16,9 +17,9 @@
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-left" (click)="prev(0)"></span></a>
                                         </div>
-                                        <div class="col-md-8 sm-text-center" style="text-align: center;">
+                                        <div class="col-md-8 sm-text-center" style="text-align: center; margin-top: 2em">
                                             <p>{{rateItem.argument_text}}</p>
-                                            <button class="btn" (click)="select(rateItem)">Seleccionar</button>
+                                            <button class="btn" (click)="select(rateItem)">Seleccionar valoración</button>
                                         </div>
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-right" (click)="next(0)"></span></a>
@@ -33,7 +34,7 @@
                     </div>
                 </div>
             </tab>
-            <tab heading='Desacuerdo'>
+            <tab heading='Desacuerdos'>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
@@ -43,9 +44,9 @@
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-left" (click)="prev(1)"></span></a>
                                         </div>
-                                        <div class="col-md-8 sm-text-center" style="text-align: center;">
+                                        <div class="col-md-8 sm-text-center" style="text-align: center;  margin-top: 2em">
                                             <p>{{rateItem.argument_text}}</p>
-                                            <button class="btn" (click)="select(rateItem)">Seleccionar</button>
+                                            <button class="btn" (click)="select(rateItem)">Seleccionar valoración</button>
                                         </div>
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-right" (click)="next(1)"></span></a>
@@ -60,7 +61,7 @@
                     </div>
                 </div>
             </tab>
-            <tab heading='Preguntas'>
+            <tab heading='Preguntas/Dudas'>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
@@ -70,9 +71,9 @@
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-left" (click)="prev(2)"></span></a>
                                         </div>
-                                        <div class="col-md-8 sm-text-center" style="text-align: center;">
+                                        <div class="col-md-8 sm-text-center" style="text-align: center;  margin-top: 2em">
                                             <p>{{rateItem.argument_text}}</p>
-                                            <button class="btn" (click)="select(rateItem)">Seleccionar</button>
+                                            <button class="btn" (click)="select(rateItem)">Seleccionar valoración</button>
                                         </div>
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-right" (click)="next(2)"></span></a>
@@ -90,7 +91,14 @@
         </tabset>
     </modal-content>
     <modal-footer>
-        <div class="row"><textarea style="width:80%;" [(ngModel)]="argumentText" (keyup)="onArgumentTextChanged($event)" ></textarea></div>
-        <div class="row"><button style="width:30%" class="btn btn-success btn-block" (click)="save()">Valorar</button></div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <p style="text-align:center; font-weight:bold; margin-top: 1.5em; margin-bottom: 0.5em">Tú valoración</p>
+            <textarea class="center-block" style="width:80%;" [(ngModel)]="argumentText" (keyup)="onArgumentTextChanged($event)" ></textarea>
+            <button style="width:30%; margin-top:1em; margin-left:auto" class="btn btn-success btn-block center-block" (click)="save()">Valorar</button>
+
+          </div>
+        </div>
     </modal-footer>
 </modal>

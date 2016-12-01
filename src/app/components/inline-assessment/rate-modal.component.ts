@@ -62,6 +62,8 @@ export class RateModal implements OnInit {
       this.onNewRating.emit(ratingId);
     }
 
+    this.selectedItemRating = undefined;;
+    this.argumentText = undefined;
     this.childModal.close();
   }
 
@@ -69,7 +71,10 @@ export class RateModal implements OnInit {
     this.childModal.close();
   }
 
+  
+
   public open(tab: number, sectionNode: any, range: any) {
+
     this.tabs.toArray()[tab].active = true;
 
     this.positivasIndex = 0;

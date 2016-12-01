@@ -162,6 +162,10 @@ export class EditorComponent implements OnInit, OnDestroy {
         divNode = divNode.parentElement;
       }
 
+    if (divNode.classList.contains("wave-editor-on") ||
+         divNode.classList.contains("wave-editor-off"))
+         return
+
     if (!divNode)
       return;
 
@@ -196,11 +200,19 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.editor.edit(cObject.root.get('doc'));
 
       this.editor.onSelectionChanged((range) => {
+        this.currentHeaderNode = this.getContainerHeader(range);
+
+        if (!this.currentHeaderNode) {
+          this.currentHeaderNode = {
+            textContent: ''
+          };
+        }
+
         window._range = range;
         if (range.lenght > 5) {
           this.hideAssessment = false;
           this.assesmentTop = range.node.parentElement.offsetTop + range.node.parentElement.offsetHeight;
-          this.currentHeaderNode = this.getContainerHeader(range);
+
         } else {
           this.hideAssessment = true;
         }

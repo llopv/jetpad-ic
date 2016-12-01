@@ -4,6 +4,9 @@
 .modal-dialog {
   margin-top: 120px;
 }
+#rating .modal-dialog {
+  width: 65%;
+}
 // Disabling backdrop because of position fixed and z-index
 // https://stackoverflow.com/questions/5218927/z-index-not-working-with-fixed-positioning
 .modal-backdrop {
