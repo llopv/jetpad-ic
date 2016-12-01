@@ -38,9 +38,10 @@ export class EditorComponent implements OnInit, OnDestroy {
   annotations: Array<any>;
   hideAssessment = false;
   assesmentTop = 100;
-  selectedRange = '';
+  selectedRange : any;
   assessmentComment = false;
   hasCommented = false;
+  currentHeaderNode: any;
 
   annotationMap = {
     'bold': 'style/fontWeight=bold',
@@ -133,6 +134,34 @@ export class EditorComponent implements OnInit, OnDestroy {
     });
   }
 
+
+  getContainerHeader(range: any) {
+    let textNode = range.node;
+    let divNode = textNode.parentElement;
+    while (divNode && divNode.tagName != "DIV") {
+
+       if (divNode.classList.contains("wave-editor-on") ||
+          divNode.classList.contains("wave-editor-off"))
+          return;
+
+        divNode = divNode.parentElement;
+      }
+
+    if (!divNode)
+      return;
+
+    let headingNode = divNode;
+    while (headingNode && !headingNode.classList.contains("heading")) {
+      headingNode = headingNode.previousSibling;
+    }
+
+    if (!headingNode)
+      return;
+
+    return headingNode;
+
+  }
+
   openDocument() {
 
     this.documentService.open(this.documentId).then(cObject => {
@@ -155,6 +184,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         if (range.lenght > 10) {
           this.hideAssessment = false;
           this.assesmentTop = range.node.parentElement.offsetTop + range.node.parentElement.offsetHeight;
+          this.currentHeaderNode = this.getContainerHeader(range);
         } else {
           this.hideAssessment = true;
         }

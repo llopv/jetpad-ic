@@ -211,7 +211,6 @@
       Bookmarks (5)
     </button>
     <share-rating [texto]="'Esto es un ejemplo de texto de prueba para comentar en las redes sociales'"></share-rating>
-    <comment-assessment [tipo]="assessmentComment" [hasCommented]="hasCommented" [texto]="selectedRange.text" (emittedVote)="onCommented($event)"></comment-assessment>
     <div class="panel">
       <div class="panel-body">
         <ul>
@@ -345,7 +344,7 @@
 
 
   <div id="editor-container">
-    <editor-assessment [hidden]="hideAssessment" [posY]="assesmentTop" (onVoted)="onVoted($event)"></editor-assessment>
+    <editor-assessment [hidden]="hideAssessment" [posY]="assesmentTop" [range]="selectedRange" [sectionNode]="currentHeaderNode" (onVoted)="onVoted($event)"></editor-assessment>
   </div>
 </section>
 
