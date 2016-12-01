@@ -83,6 +83,13 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
   }
 
+  get paragraphShare() {
+    return {
+      text: this.currentHeaderNode ? this.title + ' - ' + this.currentHeaderNode.innerText : '',
+      link: this.currentHeaderNode ? window.location.href + '#' + this.currentHeaderNode.id : false
+    };
+  }
+
   updateEditorToolbar() {
     for (let formatGroup of this.formats) {
       for (let format of formatGroup) {

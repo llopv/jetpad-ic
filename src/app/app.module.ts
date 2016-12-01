@@ -47,6 +47,8 @@ import { TooltipModule } from 'ng2-bootstrap/components/tooltip';
 
 import { TabsModule } from 'ng2-bootstrap/components/tabs';
 
+import {ShareButtonsModule} from "ng2-sharebuttons";
+
 const APP_PROVIDERS = [
   AppState,
   DocumentService,
@@ -94,7 +96,8 @@ const APP_PROVIDERS = [
     CarouselModule,
     TooltipModule,
     TabsModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    ShareButtonsModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

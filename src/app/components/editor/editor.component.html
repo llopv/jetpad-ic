@@ -210,7 +210,7 @@
       <i class="icon icon-label icon-middle"></i>
       Bookmarks (5)
     </button>
-    <share-rating [texto]="'Esto es un ejemplo de texto de prueba para comentar en las redes sociales'"></share-rating>
+    <share-rating *ngIf="currentHeaderNode" [text]="paragraphShare.text" [link]="paragraphShare.link"></share-rating>
     <div class="panel">
       <div class="panel-body">
         <ul>
