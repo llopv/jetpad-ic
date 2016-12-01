@@ -11,15 +11,17 @@
                     <div class="row">
                         <div class="col">
                             <carousel [interval]="false" >
-                                <slide *ngFor="let valoracion of positivas" [index]="positivasIndex">
+                                <slide *ngFor="let valoracion of positivas" style="height: 100%">
                                     <div class="row" style="width: 100%;padding-top:5px;">
-                                        <div class="col-md-2"></div>
+                                        <div class="col-md-2">
+                                          <a><span class="glyphicon glyphicon-menu-left" (click)="prev(0)"></span></a>
+                                        </div>
                                         <div class="col-md-8 sm-text-center" style="text-align: center;">
                                             <p>{{valoracion.comentario}}</p>
                                             <button class="btn" (click)="copiar(valoracion)">copiar</button>
                                         </div>
                                         <div class="col-md-2">
-
+                                          <a><span class="glyphicon glyphicon-menu-right" (click)="next(0)"></span></a>
                                         </div>
                                     </div>
                                 </slide>
@@ -27,7 +29,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-center">{{positivasIndex}}/{{positivas.length}}</div>
+                        <div class="col text-center">{{positivasIndex +1}}/{{positivas.length}}</div>
                     </div>
                 </div>
             </tab>
@@ -35,22 +37,26 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                            <carousel [interval]="3000">
+                            <carousel>
                                 <slide *ngFor="let valoracion of negativas">
                                     <div class="row" style="width: 100%;padding-top:5px;">
-                                        <div class="col-md-2"></div>
+                                        <div class="col-md-2">
+                                          <a><span class="glyphicon glyphicon-menu-left" (click)="prev(1)"></span></a>
+                                        </div>
                                         <div class="col-md-8 sm-text-center" style="text-align: center;">
                                             <p>{{valoracion.comentario}}</p>
                                             <button class="btn" (click)="copiar(valoracion)">copiar</button>
                                         </div>
-                                        <div class="col-md-2"></div>
+                                        <div class="col-md-2">
+                                          <a><span class="glyphicon glyphicon-menu-right" (click)="next(1)"></span></a>
+                                        </div>
                                     </div>
                                 </slide>
                             </carousel>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-center">{{negativasIndex}}/{{negativas.length}}</div>
+                        <div class="col text-center">{{negativasIndex +1}}/{{negativas.length}}</div>
                     </div>
                 </div>
             </tab>
@@ -58,22 +64,26 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                            <carousel [interval]="3000">
+                            <carousel>
                                 <slide *ngFor="let valoracion of preguntas">
                                     <div class="row" style="width: 100%;padding-top:5px;">
-                                        <div class="col-md-2"></div>
+                                        <div class="col-md-2">
+                                          <a><span class="glyphicon glyphicon-menu-left" (click)="prev(2)"></span></a>
+                                        </div>
                                         <div class="col-md-8 sm-text-center" style="text-align: center;">
                                             <p>{{valoracion.comentario}}</p>
                                             <button class="btn" (click)="copiar(valoracion)">copiar</button>
                                         </div>
-                                        <div class="col-md-2"></div>
+                                        <div class="col-md-2">
+                                          <a><span class="glyphicon glyphicon-menu-right" (click)="next(2)"></span></a>
+                                        </div>
                                     </div>
                                 </slide>
                             </carousel>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-center">{{preguntasIndex}}/{{preguntas.length}}</div>
+                        <div class="col text-center">{{preguntasIndex + 1}}/{{preguntas.length}}</div>
                     </div>
                 </div>
             </tab>

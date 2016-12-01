@@ -90,4 +90,48 @@ sfñaksfj sñkfjasñofiusñflkasjfñlkasdfñasijfñasljñljasfñfl  fsfsñ fksad
   copiar(valoracion:any){
     this.valoracionTexto = valoracion.comentario;
   }
+
+  prev(num: number){
+    let index:number;
+    let carousel:any = this.carousels.toArray()[num];
+    if (num === 0){
+      index = this.positivasIndex;
+    } else if (num === 1){
+      index = this.negativasIndex;
+    } else {
+      index = this.preguntasIndex;
+    }
+    if (index > 0) {
+      carousel.prev();
+      if (num === 0){
+        this.positivasIndex--;
+      } else if (num === 1){
+        this.negativasIndex--;
+      } else {
+        this.preguntasIndex--;
+      }
+    }
+  }
+
+  next(num: number){
+    let index:number;
+    let carousel:any = this.carousels.toArray()[num];
+    if (num === 0){
+      index = this.positivasIndex;
+    } else if (num === 1){
+      index = this.negativasIndex;
+    } else {
+      index = this.preguntasIndex;
+    }
+    if (index < carousel.slides.length -1 ) {
+      carousel.next();
+      if (num === 0){
+        this.positivasIndex++;
+      } else if (num === 1){
+        this.negativasIndex++;
+      } else {
+        this.preguntasIndex++;
+      }
+    }
+  }
 }
