@@ -346,7 +346,7 @@
 
 
   <div id="editor-container">
-    <editor-assessment [hidden]="hideAssessment" [posY]="assesmentTop" [range]="selectedRange" [sectionNode]="currentHeaderNode" (onVoted)="onVoted($event)"></editor-assessment>
+    <editor-assessment [hidden]="hideAssessment" [posY]="assesmentTop" [range]="selectedRange" [sectionNode]="currentHeaderNode" (onNewRating)="onNewRating($event)"></editor-assessment>
     <graficos></graficos>
   </div>
 </section>

@@ -65,6 +65,10 @@ export class RateModal implements OnInit {
     this.childModal.close();
   }
 
+  close() {
+    this.childModal.close();
+  }
+
   public open(tab: number, sectionNode: any, range: any) {
     this.tabs.toArray()[tab].active = true;
 
