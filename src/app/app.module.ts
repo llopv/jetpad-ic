@@ -30,7 +30,7 @@ import {CommentAssessment} from "./components/inline-assessment/comment-assessme
 import {RateModal} from "./components/inline-assessment/rate-modal.component";
 import {ShareRating} from "./components/inline-assessment/share-rating.component";
 
-import { DocumentService, ListenerService, UserService } from "./services";
+import { DocumentService, ListenerService, UserService, RatingService } from "./services";
 import { LoggedUserGuard } from "./guards";
 import { SessionResolver } from "./resolver";
 import { OrderPipe, SearchPipe } from "./pipes";
@@ -53,7 +53,8 @@ const APP_PROVIDERS = [
   ListenerService,
   UserService,
   SessionResolver,
-  LoggedUserGuard
+  LoggedUserGuard,
+  RatingService
 ];
 
 @NgModule({
