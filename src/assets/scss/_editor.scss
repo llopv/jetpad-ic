@@ -307,9 +307,9 @@
   }
 
   .editor-box-right {
-    position: absolute;
+    position: fixed;
     width: 20em;
-    top: 200px;
+    top: 280px;
     display: flex;
     flex-direction: column;
   }
