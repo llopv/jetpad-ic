@@ -202,7 +202,7 @@
 
   <div class="editor-box-right">
 
-    <moderator-tool (estadisticasActivated)="pintarGraficos()" [selectedSection]="currentHeaderNode.textContent"></moderator-tool>
+    <moderator-tool (estadisticasActivated)="pintarGraficos($event)" [selectedSection]="currentHeaderNode.textContent"></moderator-tool>
 
     <!--button class="btn btn-with-icon btn-editor blue">
       <i class="icon icon-comment icon-middle"></i>

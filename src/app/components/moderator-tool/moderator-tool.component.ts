@@ -9,12 +9,12 @@ import {Component, Input, Output, EventEmitter} from '@angular/core'
         <h4>Análisis</h4>
         <div>
           <div class="panel panel-interno">           
-            <button class="btn btn-info btn-block" (click)="estadisticas()">
+            <button class="btn btn-info btn-block" (click)="estadisticas(false)">
               <span class="negrita">Análisis de sección</span>
               <p class="hideOverflow">{{selectedSection}}</p>
             </button>
           </div>
-          <button class="btn btn-info btn-block btn-documento" (click)="estadisticas()">
+          <button class="btn btn-info btn-block btn-documento" (click)="estadisticas(true)">
               <span class="negrita">Análisis del documento</span></button>          
         </div>
         <h4>Versiones</h4>
@@ -61,9 +61,9 @@ export class ModeratorTool {
 
   @Input() selectedSection:string;
 
-  @Output() estadisticasActivated = new EventEmitter<any>();
+  @Output() estadisticasActivated = new EventEmitter<boolean>();
 
-  estadisticas() {
-    this.estadisticasActivated.emit();
+  estadisticas(what: boolean) {
+    this.estadisticasActivated.emit(what);
   }
 }

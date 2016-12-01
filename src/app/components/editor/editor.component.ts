@@ -260,7 +260,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.hasCommented = false;
   }
 
-  pintarGraficos() {
-    this.graficos.open();
+  pintarGraficos(what: boolean) {
+    this.graficos.open(what);
   }
 }

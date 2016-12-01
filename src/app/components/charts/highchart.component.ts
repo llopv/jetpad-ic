@@ -3,6 +3,7 @@ import {Modal} from "ng2-modal/Modal"
 import {pintarGrafica1} from './grafica1'
 import {pintarGrafica2} from './grafica2'
 import {pintarGrafica3} from './grafica3'
+import {pintarGrafica4} from './grafica4'
 
 @Component({
   selector: 'graficos',
@@ -11,8 +12,9 @@ import {pintarGrafica3} from './grafica3'
 
 export class Graficos{
   @ViewChild(Modal) childModal: Modal;
-
-  public open() {
+  general: boolean = true;
+  public open(general:boolean) {
+    this.general = general;
     this.childModal.open();
   }
 
@@ -21,11 +23,18 @@ export class Graficos{
   }
 
   actionOnOpen(){
-    setTimeout(function () {
-      pintarGrafica1();
-      pintarGrafica2();
-      pintarGrafica3()
-    },100);
+    if (this.general) {
+      setTimeout(function () {
+        pintarGrafica1();
+        pintarGrafica2();
+        //pintarGrafica3()
+      },100);
+    } else {
+      setTimeout(function () {
+        pintarGrafica4();
+      },100);
+    }
+
     /*pintarGrafica1();
     pintarGrafica2();
     pintarGrafica3();*/

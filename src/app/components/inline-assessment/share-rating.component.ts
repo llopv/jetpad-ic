@@ -19,7 +19,15 @@ import {Component, Input} from '@angular/core'
             <input value="{{link}}">
           </div>
         </div>
-    `
+    `,
+    styles: [`
+      .panel{
+          width: 280px;
+      }
+      input{
+          width: 100%;
+      }
+    `]
 })
 
 export class ShareRating {

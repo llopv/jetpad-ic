@@ -1,11 +1,16 @@
 <modal (onOpen)="actionOnOpen()">
   <modal-header>
-    <h3>Estadísticas usuario</h3>
+    <h3 *ngIf="general">Análisis del documento</h3>
+    <h3 *ngIf="!general">Análisis sección</h3>
   </modal-header>
   <modal-content>
-    <div id="container" style="height: 400px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
-    <div id="container1" style="height: 400px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
-    <div id="container2"></div>
+    <div *ngIf="general">
+      <div id="container" style="height: 400px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
+      <div id="container1" style="height: 400px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
+    </div>
+    <div *ngIf="!general">
+      <div id="container2" style="height: 400px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
+    </div>
   </modal-content>
   <modal-footer>
   </modal-footer>
