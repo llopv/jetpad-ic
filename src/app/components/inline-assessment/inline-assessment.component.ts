@@ -27,6 +27,8 @@ import {RateModal} from "./rate-modal.component";
 
 export class InlineAssessment implements OnInit {
 
+    @Input() range: any;
+    @Input() sectionNode: any;
     @Input() posY: number;
     @Input() hidden: boolean;
     @Output() onVoted = new EventEmitter<boolean>();
@@ -48,7 +50,7 @@ export class InlineAssessment implements OnInit {
     }
 
     openModal(agreed: number) {
-        this.childModal.open(agreed);
+        this.childModal.open(agreed, this.sectionNode, this.range);
     }
 
 }

@@ -3,6 +3,7 @@ import {Modal} from "ng2-modal/Modal"
 import {SlideComponent} from "ng2-bootstrap/components/carousel/slide.component"
 import {TabDirective} from "ng2-bootstrap/components/tabs/tab.directive"
 import {CarouselComponent} from "ng2-bootstrap/components/carousel/carousel.component"
+import { RatingService } from "../../services";
 
 @Component({
   selector: 'rate-modal',
@@ -10,13 +11,11 @@ import {CarouselComponent} from "ng2-bootstrap/components/carousel/carousel.comp
 })
 
 export class RateModal implements OnInit {
+
   @Input() type: number;
-  @Input() section: string = 'Artículo 1';
-  @Input() content: string = `Contenido del aritculo 1 para nuestra ley super guapa creada de forma colaborativa. Esto
-tiene que ser muy largo para probar que el scroll funciona correctamente. Así que asdf asdfoiu  asdfñlkjasui lkj sdf
-fasklj asuñlkj sfñoiua sdkljsdfiuwlkñj sdñj sdfñlkj sfuoasñklj asdfouiñsd lkjasñasklfjasfñljas lkasñouisñlkasj as
-f asñlkfjasdñklfjsois lñkjasñoiusf lkasjfñiu fñlasfasñi fñlkfjsñoifuasñ flksfñliasf ñsklfjasñofis fñlsjf as
-sfñaksfj sñkfjasñofiusñflkasjfñlkasdfñasijfñasljñljasfñfl  fsfsñ fksadñlfka sflka sflaskf aslfjalkf jsfasf`;
+  @Input() section: string = "Not section available";
+  @Input() content: string = "Not text available";
+
   @ViewChild(Modal) childModal: Modal;
   @ViewChildren(TabDirective) tabs:QueryList<TabDirective>;
   @ViewChildren(CarouselComponent) carousels:QueryList<CarouselComponent>;
@@ -26,63 +25,40 @@ sfñaksfj sñkfjasñofiusñflkasjfñlkasdfñasijfñasljñljasfñfl  fsfsñ fksad
   preguntasIndex: number = 0;
   currentTab: number = 0;
   valoracionTexto: string;
+
+  constructor(private ratingService: RatingService) {
+
+  }
+
   ngOnInit() {
 
   }
 
-  positivas = [
-    {
-      comentario: 'Esto es un primer comentario sobre el texto',
-      fecha: new Date()
-    },
-    {
-      comentario: 'Esto es un segundo comentario sobre el texto',
-      fecha: new Date()
-    },
-    {
-      comentario: 'Esto es un tercer comentario sobre el texto',
-      fecha: new Date()
-    },
-    {
-      comentario: 'Esto es un cuarto comentario sobre el texto',
-      fecha: new Date()
-    }
-  ];
-
-  negativas = [
-    {
-      comentario: 'Esto es un primer comentario sobre el texto',
-      fecha: new Date()
-    },
-    {
-      comentario: 'Esto es un segundo comentario sobre el texto',
-      fecha: new Date()
-    },
-    {
-      comentario: 'Esto es un tercer comentario sobre el texto',
-      fecha: new Date()
-    }
-  ];
-
-  preguntas = [
-    {
-      comentario: 'Esto es un primer comentario sobre el texto',
-      fecha: new Date()
-    },
-    {
-      comentario: 'Esto es un segundo comentario sobre el texto',
-      fecha: new Date()
-    }
-  ];
-
+  agreeRatings: Array<any>;
+  disagreeRatings: Array<any>;
+  questionRatings: Array<any>;
 
 
   public close() {
     this.childModal.close();
   }
 
-  public open(tab:number) {
+  public open(tab: number, sectionNode: any, range: any) {
     this.tabs.toArray()[tab].active = true;
+
+    window._section = sectionNode;
+    window._range = range;
+
+    let ratings = this.ratingService.getRatings(sectionNode.id, "");
+    this.agreeRatings = ratings.agree;
+    this.disagreeRatings = ratings.disagree;
+    this.questionRatings = ratings.question;
+
+    this.section = sectionNode.textContent;
+    this.content = range.node.textContent;
+
+
+
     this.childModal.open();
     console.log(this.carousels);
   }
@@ -90,6 +66,7 @@ sfñaksfj sñkfjasñofiusñflkasjfñlkasdfñasijfñasljñljasfñfl  fsfsñ fksad
   copiar(valoracion:any){
     this.valoracionTexto = valoracion.comentario;
   }
+
 
   prev(num: number){
     let index:number;
@@ -134,4 +111,5 @@ sfñaksfj sñkfjasñofiusñflkasjfñlkasdfñasijfñasljñljasfñfl  fsfsñ fksad
       }
     }
   }
+
 }
