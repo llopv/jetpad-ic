@@ -17,8 +17,8 @@
                                           <a><span class="glyphicon glyphicon-menu-left" (click)="prev(0)"></span></a>
                                         </div>
                                         <div class="col-md-8 sm-text-center" style="text-align: center;">
-                                            <p>{{valoracion.comentario}}</p>
-                                            <button class="btn" (click)="copiar(valoracion)">copiar</button>
+                                            <p>{{rateItem.argument_text}}</p>
+                                            <button class="btn" (click)="select(rateItem)">Seleccionar</button>
                                         </div>
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-right" (click)="next(0)"></span></a>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-center">{{positivasIndex +1}}/{{positivas.length}}</div>
+                        <div class="col text-center">{{positivasIndex}}/{{agreeRatings.length}}</div>
                     </div>
                 </div>
             </tab>
@@ -38,14 +38,14 @@
                     <div class="row">
                         <div class="col">
                             <carousel>
-                                <slide *ngFor="let valoracion of negativas">
+                                <slide *ngFor="let rateItem of disagreeRatings">
                                     <div class="row" style="width: 100%;padding-top:5px;">
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-left" (click)="prev(1)"></span></a>
                                         </div>
                                         <div class="col-md-8 sm-text-center" style="text-align: center;">
-                                            <p>{{valoracion.comentario}}</p>
-                                            <button class="btn" (click)="copiar(valoracion)">copiar</button>
+                                            <p>{{rateItem.argument_text}}</p>
+                                            <button class="btn" (click)="select(rateItem)">Seleccionar</button>
                                         </div>
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-right" (click)="next(1)"></span></a>
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-center">{{negativasIndex +1}}/{{negativas.length}}</div>
+                        <div class="col text-center">{{negativasIndex}}/{{disagreeRatings.length}}</div>
                     </div>
                 </div>
             </tab>
@@ -65,14 +65,14 @@
                     <div class="row">
                         <div class="col">
                             <carousel>
-                                <slide *ngFor="let valoracion of preguntas">
+                                <slide *ngFor="let rateItem of questionRatings">
                                     <div class="row" style="width: 100%;padding-top:5px;">
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-left" (click)="prev(2)"></span></a>
                                         </div>
                                         <div class="col-md-8 sm-text-center" style="text-align: center;">
-                                            <p>{{valoracion.comentario}}</p>
-                                            <button class="btn" (click)="copiar(valoracion)">copiar</button>
+                                            <p>{{rateItem.argument_text}}</p>
+                                            <button class="btn" (click)="select(rateItem)">Seleccionar</button>
                                         </div>
                                         <div class="col-md-2">
                                           <a><span class="glyphicon glyphicon-menu-right" (click)="next(2)"></span></a>
@@ -83,14 +83,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-center">{{preguntasIndex + 1}}/{{preguntas.length}}</div>
+                        <div class="col text-center">{{preguntasIndex}}/{{questionRatings.length}}</div>
                     </div>
                 </div>
             </tab>
         </tabset>
     </modal-content>
     <modal-footer>
-        <div class="row"><textarea style="width:100%;" [(ngModel)]="valoracionTexto"></textarea></div>
-        <div class="row"><button class="btn btn-success btn-block" (click)="close()">Valorar</button></div>
+        <div class="row"><textarea style="width:80%;" [(ngModel)]="argumentText" (keyup)="onArgumentTextChanged($event)" ></textarea></div>
+        <div class="row"><button style="width:30%" class="btn btn-success btn-block" (click)="save()">Valorar</button></div>
     </modal-footer>
 </modal>

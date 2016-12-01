@@ -31,22 +31,20 @@ export class InlineAssessment implements OnInit {
     @Input() sectionNode: any;
     @Input() posY: number;
     @Input() hidden: boolean;
-    @Output() onVoted = new EventEmitter<boolean>();
+    @Output() onNewRating = new EventEmitter<string>();
     @ViewChild(RateModal) childModal: RateModal;
-    voted = false;
+
 
     ngOnInit() {
         this.hidden = false;
     }
 
-    vote(agreed: boolean) {
-        console.log("Emitiendo voto... ");
-        this.onVoted.emit(agreed);
-        this.voted = true;
+    newRating(ratingId: string) {
+        this.onNewRating.emit(ratingId);
     }
 
     close() {
-        this.childModal.close();
+        //this.childModal.close();
     }
 
     openModal(agreed: number) {

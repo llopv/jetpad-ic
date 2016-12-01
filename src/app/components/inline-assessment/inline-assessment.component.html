@@ -3,4 +3,4 @@
     <button class="action-button btn btn-danger" (click)="openModal(1)"><span class="action-icon glyphicon glyphicon-thumbs-down"></span></button>
     <button class="action-button btn" (click)="openModal(2)"><span class="action-icon glyphicon glyphicon-star"></span></button>
 </div>
-<rate-modal></rate-modal>
+<rate-modal (onNewRating)="newRating($event)"></rate-modal>

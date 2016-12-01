@@ -33,11 +33,11 @@ export class RatingService {
     // Get current section version
     if (!obj.root.get(this.NODE_SECTION_VERSIONS).get(sectionId)) {
       // now just a Date timestamp as version
-      let timestamp = Date.now();
+      let timestamp = Date.now().toString();
       obj.root.get(this.NODE_SECTION_VERSIONS).put(sectionId, timestamp);
     }
 
-    return obj.root.get(this.NODE_SECTION_VERSIONS).get(sectionId).value;
+    return obj.root.get(this.NODE_SECTION_VERSIONS).get(sectionId).getValue();
 
   }
 
@@ -47,8 +47,8 @@ export class RatingService {
     let obj = this.documentService.document;
 
     // Initialize rating map
-    if (obj.root.get(this.NODE_SECTION_RATINGS)) {
-          obj.root.put(this.NODE_SECTION_RATINGS, obj.createMap());
+    if (!obj.root.get(this.NODE_SECTION_RATINGS)) {
+        obj.root.put(this.NODE_SECTION_RATINGS, obj.createMap());
     }
 
     let sectionRatingsMap = obj.root.get(this.NODE_SECTION_RATINGS);
@@ -67,7 +67,7 @@ export class RatingService {
   // Add rating to a text section for the current logged in user
   // Return an unique id
   //
-  addRating(section: String, sectionLevel: String, argumentType: String, argument: String, ratingType: String) {
+  addRating(section: string, sectionLevel: string, argumentType: string, argument: string, ratingType: string) {
 
     // Compose section id
     let sectionId = section+"_"+sectionLevel;
@@ -78,10 +78,10 @@ export class RatingService {
     let obj = this.documentService.document;
 
     // Generate rating id - ugly way!
-    let ratingId = sectionId+":"+currentSectionVersion+":"+Date.now();
+    let ratingId = sectionId+":"+currentSectionVersion+":"+Date.now().toString();
 
     // Create new rating object
-    let rating = obj.createMap();
+    let rating = ratingMap.put(ratingId, obj.createMap());
     rating.put("rating_id", ratingId);
     rating.put("doc_version","");
     rating.put("doc_range_start", "");
@@ -92,7 +92,6 @@ export class RatingService {
     rating.put("endorsement_count","1");
     rating.put("date", Date.now().toString());
 
-    ratingMap.put(ratingId, rating);
 
     return ratingId;
   }
