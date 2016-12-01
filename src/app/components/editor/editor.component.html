@@ -212,7 +212,7 @@
       <i class="icon icon-label icon-middle"></i>
       Bookmarks (5)
     </button-->
-    <share-rating *ngIf="currentHeaderNode" [text]="paragraphShare.text" [link]="paragraphShare.link"></share-rating>
+    <share-rating *ngIf="currentHeaderNode.textContent != ''" [text]="paragraphShare.text" [link]="paragraphShare.link"></share-rating>
     <!--div class="panel">
       <div class="panel-body">
         <ul>
