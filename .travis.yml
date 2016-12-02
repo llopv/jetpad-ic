@@ -25,4 +25,4 @@ script:
   - npm run build
 after_success:
   - export SSHPASS=$DEPLOY_PASS
-  - sshpass -e rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/* jetpad@demo.jetpad.net:/var/www/demo.jetpad.net
+  - sshpass -e rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/* jetpad@demo.jetpad.net:/var/www/argos.jetpad.net
