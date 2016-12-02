@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
         <header>
 
             <div #lateralMenu class="lateral-menu">
-              
+
               <div class="clearfix no-gutter">
                 <div class="col-sm-12 text-right">
                   <div class="close-button" (click)="closeLateralMenu()">
@@ -122,7 +122,7 @@ import {Router} from "@angular/router";
               <div class="container-fluid">
                 <div class="navbar-header">
                   <a class="navbar-brand logo" [routerLink]=" ['./'] ">
-                    <img alt="JET PAD" height="53" width="94" src="assets/img/jetpad-logo.png">
+                    <img alt="RED ARGOS" height="53" src="assets/img/argos-logo.png">
                   </a>
                 </div>
                 <div class="collapse navbar-collapse">
