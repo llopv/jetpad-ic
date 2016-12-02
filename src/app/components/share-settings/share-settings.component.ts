@@ -45,10 +45,10 @@ import {DocumentService} from "../../services/document.service";
                     Participant
                  </div>
                  <div *ngIf="!first" class="remove-participant-icon col-xs-1 no-padding">
-                  <i (click)="deleteParticipant(participant.id)" class="icon icon-close icon-middle cursor-pointer"></i> 
+                  <i (click)="deleteParticipant(participant.id)" class="icon icon-close icon-middle cursor-pointer"></i>
                  </div>
               </div>
-              <div class="col-xs-12 no-padding mar-top-30">         
+              <div class="col-xs-12 no-padding mar-top-30">
                 <p>Invite people</p>
                 <input [(ngModel)]="usersInvited">
               </div>

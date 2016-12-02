@@ -5,8 +5,8 @@ import {Component, Input} from '@angular/core'
     template:`
         <div class="panel">
           <div class="panel-body" style="padding-top: 0;">
-            <h3>Share section</h3>
-            <p>{{text}}</p>
+            <h4 style="margin-top:1em; border-bottom-style:solid; border-bottom-width:1px; padding-bottom:0.5em">Compartir</h4>
+            <p class="text-center">{{text}}</p>
             <share-buttons
             [url]="escapedLink"
             [title]="text"
