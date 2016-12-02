@@ -41,6 +41,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   assesmentTop = 100;
   selectedRange : any;
   currentHeaderNode: any;
+  outline: any;
 
 
   annotationMap = {
@@ -86,10 +87,15 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
   }
 
+  documentLink(hash) {
+    let link:string = window.location.origin + window.location.pathname;
+    return link + (hash ? '#' + hash : '');
+  }
+
   get paragraphShare() {
     return {
       text: this.currentHeaderNode ? this.title + ' - ' + this.currentHeaderNode.innerText : '',
-      link: this.currentHeaderNode ? window.location.href + '#' + this.currentHeaderNode.id : false
+      link: this.currentHeaderNode ? this.documentLink(this.currentHeaderNode.id) : false
     };
   }
 
@@ -122,6 +128,10 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
   }
 
+  refreshOutline() {
+    this.outline = this.editor.getAnnotationSet('paragraph/header');
+  }
+
   ngOnDestroy() {
     this.participants = [];
     this.documentId = undefined;
@@ -137,6 +147,11 @@ export class EditorComponent implements OnInit, OnDestroy {
     };
 
     let annotations = {
+      'paragraph/header': {
+        onAdd: this.refreshOutline,
+        onChange: this.refreshOutline,
+        onRemove: this.refreshOutline
+      },
       'rating': {
         styleClass: "rating"
       }
@@ -145,7 +160,9 @@ export class EditorComponent implements OnInit, OnDestroy {
 
     this.route.params.subscribe((param: any) => {
       this.documentId = param['id'];
-      this.openDocument();
+      this.openDocument().then(() => {
+        this.refreshOutline();
+      });
     });
   }
 
@@ -183,7 +200,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   openDocument() {
 
-    this.documentService.open(this.documentId).then(cObject => {
+    return this.documentService.open(this.documentId).then(cObject => {
 
       // Initialize the doc
       if (!cObject.root.get('doc')) {
