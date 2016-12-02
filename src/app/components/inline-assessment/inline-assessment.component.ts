@@ -44,7 +44,7 @@ export class InlineAssessment implements OnInit {
     }
 
     close() {
-        //this.childModal.close();
+        this.childModal.close();
     }
 
     openModal(agreed: number) {

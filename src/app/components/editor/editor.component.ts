@@ -40,8 +40,6 @@ export class EditorComponent implements OnInit, OnDestroy {
   hideAssessment = false;
   assesmentTop = 100;
   selectedRange : any;
-  assessmentComment = false;
-  hasCommented = false;
   currentHeaderNode: any;
 
 
@@ -138,7 +136,12 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
     };
 
-    this.editor = DocumentService.editor('editor-container', widgets, {});
+    let annotations = {
+      'rating': {
+        styleClass: "rating"
+      }
+    };
+    this.editor = DocumentService.editor('editor-container', widgets, annotations);
 
     this.route.params.subscribe((param: any) => {
       this.documentId = param['id'];
@@ -158,6 +161,10 @@ export class EditorComponent implements OnInit, OnDestroy {
 
         divNode = divNode.parentElement;
       }
+
+    if (divNode.classList.contains("wave-editor-on") ||
+         divNode.classList.contains("wave-editor-off"))
+         return
 
     if (!divNode)
       return;
@@ -193,15 +200,23 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.editor.edit(cObject.root.get('doc'));
 
       this.editor.onSelectionChanged((range) => {
-        if (range.lenght > 10) {
+        this.currentHeaderNode = this.getContainerHeader(range);
+
+        if (!this.currentHeaderNode) {
+          this.currentHeaderNode = {
+            textContent: ''
+          };
+        }
+
+        window._range = range;
+        if (range.lenght > 5) {
           this.hideAssessment = false;
           this.assesmentTop = range.node.parentElement.offsetTop + range.node.parentElement.offsetHeight;
-          this.currentHeaderNode = this.getContainerHeader(range);
+
         } else {
           this.hideAssessment = true;
         }
         this.selectedRange = range;
-        this.hasCommented = false;
         this.annotations = range.annotations;
         this.updateEditorToolbar();
       });
@@ -250,17 +265,15 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.editor.setAnnotation('style/fontFamily', textFamily)
   }
 
-  onVoted(agreed: boolean) {
-    this.assessmentComment = agreed;
-    this.hasCommented = true;
+  onNewRating(ratingId: string) {
+    this.hideAssessment = true;
+    this.editor.setAnnotationInRange(this.selectedRange, "rating", ratingId);
+
   }
 
-  onCommented() {
-    this.hideAssessment = true;
-    this.hasCommented = false;
-  }
 
   pintarGraficos(what: boolean) {
     this.graficos.open(what);
   }
+
 }

@@ -119,7 +119,6 @@ export class RatingService {
   // Get a list of ratings for a text section filtering by type
   //
   getRatings(section: String, sectionLevel: String) {
-
     let sectionId = section+"_"+sectionLevel;
     let currentSectionVersion = this.getCurrentSectionVersion(sectionId);
     let ratingMap = this.getSectionRatingsMap(sectionId, currentSectionVersion);
@@ -134,7 +133,8 @@ export class RatingService {
 
     for (var k in ratingKeys) {
 
-      let rating = ratingMap.get(k);
+      let rating = ratingMap.get(ratingKeys[k]);
+      if (!rating) continue;
       let ratingObject = {
 
         rating_id: rating.get("rating_id").getValue(),
