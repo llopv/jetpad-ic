@@ -94,7 +94,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   get paragraphShare() {
     return {
-      text: this.currentHeaderNode ? this.title + ' - ' + this.currentHeaderNode.innerText : '',
+      text: this.currentHeaderNode ? this.currentHeaderNode.innerText : '',
       link: this.currentHeaderNode ? this.documentLink(this.currentHeaderNode.id) : false
     };
   }

@@ -37,7 +37,7 @@
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
-        height: 90px;
+        height: 3em;
         font-style: italic;
         color: $text-color-blend;
         font-size: 20px;
@@ -211,7 +211,7 @@
 
 .editor-box-container {
   background-color: $bg-gray;
-  padding: 200px 0 3em;
+  padding: 140px 0 3em;
   margin: 0 auto;
   position: relative;
   overflow-x: auto;
@@ -310,7 +310,7 @@
   .editor-box-right {
     position: fixed;
     width: 20em;
-    top: 280px;
+    top: 210px;
     display: flex;
     flex-direction: column;
   }
@@ -318,7 +318,7 @@
   .editor-box-left {
     position: fixed;
     width: 20em;
-    top: 280px;
+    top: 210px;
     left: calc(((100vw - 980px) / 2) - 17em);
     align-items: flex-end;
     .btn-editor {

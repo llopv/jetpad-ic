@@ -6,7 +6,7 @@ import {Component, Input} from '@angular/core'
         <div class="panel">
           <div class="panel-body" style="padding-top: 0;">
             <h4 style="margin-top:1em; border-bottom-style:solid; border-bottom-width:1px; padding-bottom:0.5em">Compartir</h4>
-            <p class="text-center">{{text}}</p>
+            <p class="text-italic">{{text}}</p>
             <share-buttons
             [url]="escapedLink"
             [title]="text"

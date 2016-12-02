@@ -7,21 +7,25 @@ import {Component, Input, Output, EventEmitter} from '@angular/core'
       <div class="panel-body panel-moderador">
         <h4 style="border-bottom-style:solid; border-bottom-width:1px; padding-bottom:0.5em">Participación</h4>
         <div>
+          <p class="hideOverflow">{{selectedSection}}</p>        
           <div class="panel panel-interno">
-            <button class="btn btn-info btn-block" (click)="estadisticas(false)">
+            <button class="btn btn-default btn-block" (click)="estadisticas(false)">
               <span class="negrita">Análisis de sección</span>
-              <p class="hideOverflow">{{selectedSection}}</p>
             </button>
           </div>
-          <button class="btn btn-info btn-block btn-documento" (click)="estadisticas(true)">
+          <button class="btn btn-default btn-block btn-documento" (click)="estadisticas(true)">
               <span class="negrita">Análisis del documento</span></button>
         </div>
 
-        <h4 style="margin-top:2em; border-bottom-style:solid; border-bottom-width:1px; padding-bottom:0.5em">Control de versiones</h4>
+        <h4 style="margin-top:1em; border-bottom-style:solid; border-bottom-width:1px; padding-bottom:0.5em">Control de versiones</h4>
         <div>
-          <button class="btn" style="display:none;"></button>
-          <button class="btn btn-default btn-block">Versiones</button>
-          <button class="btn btn-default btn-block">Why</button>
+          <p><span>Versión sección: </span>5, desde <span>1/12/2016</span></p>
+        </div>
+        <div>
+          <p style="font-weight: bold">Nueva versión:</p>
+          <textarea style="width:100%; height: 3em;">Descripción de los cambios</textarea>
+          <button class="btn btn-danger btn-block">Confirmar nueva versión</button>
+
         </div>
       </div>
     </div>
