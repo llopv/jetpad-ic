@@ -225,7 +225,6 @@ export class EditorComponent implements OnInit, OnDestroy {
           };
         }
 
-        window._range = range;
         if (range.lenght > 5) {
           this.hideAssessment = false;
           this.assesmentTop = range.node.parentElement.offsetTop + range.node.parentElement.offsetHeight;

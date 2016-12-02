@@ -31,6 +31,7 @@ import {RateModal} from "./components/inline-assessment/rate-modal.component";
 import {ShareRating} from "./components/inline-assessment/share-rating.component";
 import {Graficos} from "./components/charts/highchart.component";
 import {ModeratorTool} from "./components/moderator-tool/moderator-tool.component";
+import {EditorOutline} from "./components/editor/outline.component";
 
 import { DocumentService, ListenerService, UserService, RatingService } from "./services";
 import { LoggedUserGuard } from "./guards";
@@ -88,6 +89,7 @@ const APP_PROVIDERS = [
     ShareRating,
     Graficos,
     ModeratorTool,
+    EditorOutline,
     DROPDOWN_DIRECTIVES
   ],
   imports: [ // import Angular's modules
