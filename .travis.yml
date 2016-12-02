@@ -1,12 +1,12 @@
 language: node_js
 env:
   global:
-    secure: SbRGlt5ddFWKMabLkARwdOgVfxI0+/M+KFiljP73wjI33/BcAt9NLvoQ5fWzK6rFUKxu2pTZ2X85t9QNSu5lwYNrW6ZpaWRaipVDt7BihBePBNRfAmlVABolD0mRyi3vC2nTif2K0aK+7zxrayHk5RyfnM9P3TfN6rb3KAOQnIQsCZu8tlK+blD7XBPvhhn7LJzHw+CYXgJgXnX0a144jpLL/mkBTVvVKML2Uevd4y5Vm74BdD9WSsgsdS5/g7crosd3VzU655khaZ90rpIxKM90XSpWevN8tDaGvpsh21QZVcOZzrBCFqIxhNBsiFUZ1oW90qxPRuOknMAbMHfnpGGX2zDoBOrIwHaCKvwwatHOQdgMm9/KiiTTkzoRbbOb1Bno4o0MmqiM+zQ8dMOcD4Rt+GvgQd67v4JuJORzvFfsEgHSQyuOkXeuFE5DDNVYTiPIi6Ls9WrZpNzFosGeaY2lyY898PWbi7MErEgHRObXuNMPeqTvh4FRNV9siHP1jbrkgkMzuxeSwHYhP5Nt1Z9szhFIh63QR7PNTockrSX6doYS5HejexGdadIMgy/ayc85ynciWriF6lavxQ8QIWNe9t4xtdkve813A/SxzVBonYdHnULQ9ciS5IbD+VJwtfc9NDCnBS3+y649ZKLTDyco9cWsOwL8vXgkJ9whSc0=
+    secure: i7JlAHK7oNNFWVlwDo3h1dq2W4cdDdcLvcD5kMItaJxpp61dE44Mq5k8xXvVf1WVK1U8WVqw2/sgYz7QpKh5/+3/KVhQCXzY73+Srp2kRm3IeeYfvfGjMk0ajSKuT9UUW524siXYkumkOEaiq/klqmL2HxIsWj0c+/nR1ZuCuMXRYTWw4XcoiO8a5hFLVbDtSU2snBU573lJON6wX+4T9JG9m7FttsHC8gD9prBs69n77heHF0EvuROf8v3HtWnjMWEjOrpUv/s/wm7jk+xrQB1+HH5E/2RJDd9ciREfw3n4jdcxCgZp1FgCAqxLw1MrlePV0OrUQRToCGWNeeuQ23qzIe0H77ZPrlAo1hs3i1ooqgGejFwEhuKJCyWhKPqPPJrsjHwIl4ZNzsCKkaM5ET6wVuKmn3LKlpFE4GLGhg0ZcvBfkY/HGEWDR5S9sYAwd1nGWVXnyYjW2dmygBPbgh21RNiNs1NQMjNaRy4+exGTLNlkg8reBpmrf+hJx2evBHnfby5Z1wQeYtnPLRRnNNGTCHpAr8otINtG8YeFaeMtU8oMZbCH5kwhVBpo8o4Wk2zJaOrfYQfPe4sF649ZdgBAfVrFerp0JaCiYpny/ZoVd+W91JK+APmYibrlzxJk38g+W4FyYFcNkIlNGDp2YTO+DdtmO//scyDr/pQgrfw=
 addons:
   apt:
     packages:
       - sshpass
-  ssh_known_hosts: demo.jetpad.net
+  ssh_known_hosts: argos.jetpad.net
 cache:
   directories:
   - node_modules
@@ -25,4 +25,4 @@ script:
   - npm run build
 after_success:
   - export SSHPASS=$DEPLOY_PASS
-  - sshpass -e rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/* jetpad@demo.jetpad.net:/var/www/argos.jetpad.net
+  - sshpass -e rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/* jetpad@argos.jetpad.net:/var/www/argos.jetpad.net
